@@ -19,23 +19,24 @@ public class AppDbContext : DbContext
 
 #### Fluent Api - Orgranizing the code
 ```
-   public class userm_config : IEntityTypeConfiguration<userm>
-    {
-        public void Configure(EntityTypeBuilder<userm> modelBuilder)
-        {
-            modelBuilder.ToTable("mast_userm");
-            modelBuilder.HasData(new userm
-            {
-                user_id = 1,
-                user_code = "admin",
-                user_name = "admin",
-                user_email = "admin@gmail.com",
-                user_is_admin = "Y",
-                user_is_locked = "N",
-                user_password = "admin"
-            });
-        }
-    }
+	public class userm_config : IEntityTypeConfiguration<userm>
+    	{
+        	public void Configure(EntityTypeBuilder<userm> modelBuilder)
+	        {
+            		modelBuilder.ToTable("mast_userm");
+        	}
+	    }
+	}
+
+	public class AppDbContext : DbContext
+	{
+        	protected override void OnModelCreating(ModelBuilder modelBuilder)
+        	{
+			modelBuilder.ApplyConfiguration(new company_config());
+        	}
+	}
+
 ```
+
 
 
