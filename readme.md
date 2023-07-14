@@ -1,6 +1,4 @@
-## Angular Training
-
-#### EF Core Code First
+## Training
 <p>
 <ul>
 <li><a href="codefirst.md">EF Core Code First</a> </li>
