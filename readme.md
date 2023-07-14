@@ -1,4 +1,4 @@
-## Training
+## Training 1
 <p>
 <ul>
 <li><a href="codefirst.md">EF Core Code First</a> </li>
