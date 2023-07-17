@@ -58,6 +58,22 @@ public class AppDbContext : DbContext
 }
 ```
 
+#### Connection String Settings
+````
+    "DefaultConnection": "server=HQSERVER;database=demodb;User Id=sa;password=sa12#;Trusted_Connection=false;TrustServerCertificate=True;",
+    "LocalDbConnection": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=test;",
+
+````
+
+#### Reading Connection String and setting dbContext
+````
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDbConnection"));
+});
+````
+
+
 #### Orgranizing the migration code using fluent api
 ````
  public class dept_config : IEntityTypeConfiguration<table name>
