@@ -116,11 +116,38 @@ public class AppDbContext : DbContext
                 	.HasForeignKey(b => b.emp_dept_id)
                 	.OnDelete(DeleteBehavior.NoAction)
                 	.IsRequired();
+
         	}
 	    }
 	}
 
 ```
 
+#### Insert Data
+````
+            modelBuilder.HasData(
+		new dept{dept_id = 1,branch_name = "HR"}
+		new dept{dept_id = 2,branch_name = "Accounts"}
+	    );
 
+````
+
+#### Migration
+
+````
+Commands for migration
+
+add-migration "migration name" //Add/Track Migration
+update-database // Apply Changes to database
+
+update-database 0 // Remove database migration
+remove-migration // Remove migration from code
+
+drop-database // Remove database
+
+
+
+
+
+```
 
