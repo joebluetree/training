@@ -8,10 +8,8 @@ A database schema can be developed gradually using code first migration. Code fi
 <p>3. Keep your database up to date with those changes</p>
 
 
-####
+#### Create below tables
 ````
-Create below tables
-
 dept		//table name
  dept_id  	//primary key
  dept_name 	//unique key, length 60
@@ -26,9 +24,8 @@ emp		//table name
 
 ````
 
-#### Creating Classes
+#### Creating classes for tables
 ```
-Create class for tables
 public class dept {
  public int    dept_id {get;set;}
  public string dept_name {get;set;}
