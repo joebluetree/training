@@ -29,7 +29,7 @@ emp		//table name
 #### Creating Classes
 ```
 Create class for tables
- public class dept {
+public class dept {
  public int    dept_id {get;set;}
  public string dept_name {get;set;}
 }
