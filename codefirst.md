@@ -1,4 +1,10 @@
 ## EF Core Code First
+<p>
+A database schema can be developed gradually using code first migration. Code first Migrations provide a set of tools that allow:
+1 Create an initial database that works with your EF model
+2 Generating migrations to keep track of changes you make to your EF model
+3 Keep your database up to date with those changes
+</p>
 
 ####
 ````
