@@ -106,7 +106,26 @@ modelBuilder
 .HasForeignKey(b => b.emp_dept_id)
 .OnDelete(DeleteBehavior.NoAction)
 .IsRequired();
+
+modelBuilder
+.HasOne(e => e.branch)
+.WithMany()
+.HasForeignKey(e => e.rec_branch_id)
+.HasPrincipalKey(e => e.branch_id)
+.IsRequired(false);
+
+modelBuilder
+.HasOne(typeof(dept))
+.WithMany()
+.HasForeignKey(e => e.emp_dept_id)
+.HasPrincipalKey(e => e.dept_id)
+.IsRequired(false);
+
+
 ````
+
+
+
 	
                 		
 
