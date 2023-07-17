@@ -125,10 +125,10 @@ public class AppDbContext : DbContext
 
 #### Insert Data
 ````
-            modelBuilder.HasData(
-		new dept{dept_id = 1,branch_name = "HR"}
-		new dept{dept_id = 2,branch_name = "Accounts"}
-	    );
+modelBuilder.HasData(
+  new dept{dept_id = 1,branch_name = "HR"}
+  new dept{dept_id = 2,branch_name = "Accounts"}
+);
 
 ````
 
@@ -144,10 +144,6 @@ update-database 0 // Remove database migration
 remove-migration // Remove migration from code
 
 drop-database // Remove database
-
-
-
-
 
 ```
 
