@@ -29,12 +29,12 @@ emp		//table name
 #### Creating Classes
 ```
 Create class for tables
- public class dept{
+ public class dept {
  public int    dept_id {get;set;}
  public string dept_name {get;set;}
 }
 
-public class emp{
+public class emp {
  public int    emp_id {get;set;}
  public string emp_name {get;set;}
  public string emp_dept_id {get;set;}
@@ -58,28 +58,55 @@ public class AppDbContext : DbContext
 	public DbSet<emp>  emp  { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-		modelBuilder.ApplyConfiguration(new company_config());
+		modelBuilder.ApplyConfiguration(new dept_config());
+		modelBuilder.ApplyConfiguration(new emp_config());
         }
 }
 ```
 
 #### Fluent Api - Orgranizing the code
 ```
-	public class userm_config : IEntityTypeConfiguration<userm>
+	public class dept_config : IEntityTypeConfiguration<dept>
     	{
-        	public void Configure(EntityTypeBuilder<userm> modelBuilder)
+        	public void Configure(EntityTypeBuilder<dept> modelBuilder)
 	        {
-            		modelBuilder.ToTable("mast_userm");
+            		modelBuilder.ToTable("dept");
+		        modelBuilder.HasKey(u => u.dept_id)
+		        modelBuilder.Property(u => u.dept_name)
+                		.HasMaxLength(60)
+		                .IsRequired();
+            		modelBuilder.HasIndex(e => new { e.dept_name})
+                		.IsUnique();
         	}
 	    }
 	}
 
-	public class AppDbContext : DbContext
-	{
-        	protected override void OnModelCreating(ModelBuilder modelBuilder)
-        	{
-			modelBuilder.ApplyConfiguration(new company_config());
+	public class emp_config : IEntityTypeConfiguration<emp>
+    	{
+        	public void Configure(EntityTypeBuilder<emp> modelBuilder)
+	        {
+            		modelBuilder.ToTable("emp");
+		        modelBuilder.HasKey(u => u.emp_id)
+		        modelBuilder.Property(u => u.emp_name)
+                		.HasMaxLength(60)
+		                .IsRequired();
+		        modelBuilder.Property(u => u.emp_address1)
+                		.HasMaxLength(100)
+		                .IsRequired();
+		        modelBuilder.Property(u => u.emp_address2)
+                		.HasMaxLength(100)
+		                .IsRequired(false);
+		        modelBuilder.Property(u => u.emp_address3)
+                		.HasMaxLength(100)
+		                .IsRequired(false);
+		        modelBuilder
+                	.HasOne(b => b.dept)
+                	.WithMany(c => c.employees)
+                	.HasForeignKey(b => b.emp_deptid)
+                	.OnDelete(DeleteBehavior.NoAction)
+                	.IsRequired();
         	}
+	    }
 	}
 
 ```
