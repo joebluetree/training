@@ -58,14 +58,14 @@ public class AppDbContext : DbContext
 }
 ```
 
-#### Connection String Settings
+#### Connection String
 ````
     "DefaultConnection": "server=HQSERVER;database=demodb;User Id=sa;password=sa12#;Trusted_Connection=false;TrustServerCertificate=True;",
     "LocalDbConnection": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=test;",
 
 ````
 
-#### Reading Connection String and setting dbContext
+#### Reading Connection String and setting the dbContext
 ````
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -76,7 +76,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 #### Orgranizing the migration code using fluent api
 ````
- public class dept_config : IEntityTypeConfiguration<table name>
+ public class class_config_name : IEntityTypeConfiguration<table name>
  {
 	public void Configure(EntityTypeBuilder<table name> modelBuilder)
 	{
@@ -84,13 +84,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
  }
 ````
 
-#### Orgranizing the code Class Wise
+#### Applying the configuration
 ````
 // add below code in OnModelCreating Method
-modelBuilder.ApplyConfiguration(new class_name());
+modelBuilder.ApplyConfiguration(new class_config_name());
 ````
 
 
+#### Below codes are entered inside configure method 
 #### Table Name
 ````
 modelBuilder.ToTable("dept");
