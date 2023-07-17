@@ -70,11 +70,15 @@ public class AppDbContext : DbContext
     	{
         	public void Configure(EntityTypeBuilder<dept> modelBuilder)
 	        {
+			//Table Name
             		modelBuilder.ToTable("dept");
+			//Primary Key
 		        modelBuilder.HasKey(u => u.dept_id)
+			//Column Max Length, Not Null
 		        modelBuilder.Property(u => u.dept_name)
                 		.HasMaxLength(60)
 		                .IsRequired();
+			//Unique
             		modelBuilder.HasIndex(e => new { e.dept_name})
                 		.IsUnique();
         	}
@@ -85,24 +89,31 @@ public class AppDbContext : DbContext
     	{
         	public void Configure(EntityTypeBuilder<emp> modelBuilder)
 	        {
+			//Table Name
             		modelBuilder.ToTable("emp");
+			//Primary Key
 		        modelBuilder.HasKey(u => u.emp_id)
+			//Set Length and Not Null
 		        modelBuilder.Property(u => u.emp_name)
                 		.HasMaxLength(60)
 		                .IsRequired();
+			//Set Length and Not Null
 		        modelBuilder.Property(u => u.emp_address1)
                 		.HasMaxLength(100)
 		                .IsRequired();
+			//Set Length and Allow Null
 		        modelBuilder.Property(u => u.emp_address2)
                 		.HasMaxLength(100)
 		                .IsRequired(false);
+			//Set Length and Allow Null
 		        modelBuilder.Property(u => u.emp_address3)
                 		.HasMaxLength(100)
 		                .IsRequired(false);
+			//Foreign Key - one to many relationship
 		        modelBuilder
                 	.HasOne(b => b.dept)
                 	.WithMany(c => c.employees)
-                	.HasForeignKey(b => b.emp_deptid)
+                	.HasForeignKey(b => b.emp_dept_id)
                 	.OnDelete(DeleteBehavior.NoAction)
                 	.IsRequired();
         	}
