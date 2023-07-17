@@ -12,7 +12,7 @@ We can set the migration using data annotation and fluent api. data annotation u
 
 </p>
 
-#### Create below tables
+#### table structure to be created using code first migration
 ````
 dept		//table name
  dept_id  	//primary key
@@ -27,6 +27,8 @@ emp		//table name
  emp_address3	//Nullable
 
 ````
+
+#### Below are the main steps to work with code first migration 
 
 #### Creating classes for tables
 ```
