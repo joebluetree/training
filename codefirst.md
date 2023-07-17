@@ -1,12 +1,16 @@
 ## EF Core Code First
 <p>
-A database schema can be developed gradually using code first migration. Code first Migrations provide a set of tools that allow:
+A database schema can be developed gradually using code first migration. It provides a set of tools that allow:
 </p>
 
 <p>1. Create an initial database that works with your EF model</p>
 <p>2. Generating migrations to keep track of changes you make to your EF model</p>
 <p>3. Keep your database up to date with those changes</p>
 
+<p>
+We can set the migration using data annotation and fluent api. data annotation uses class attributes and fluent api is a code based approach. We follow the code based approach since it is more better approach than attribute based
+
+</p>
 
 #### Create below tables
 ````
