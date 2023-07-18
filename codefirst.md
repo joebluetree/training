@@ -105,12 +105,12 @@ modelBuilder.ToTable("dept");
 #### Primary Key
 ````
 modelBuilder.HasKey(u => u.dept_id)
+.HasName("pk_deptm_dept_id");
 ````
 #### Unique Key
 ````
-modelBuilder.HasIndex(e => new { e.dept_name})
-.IsUnique();
-
+modelBuilder.HasAlternateKey(e => new { e.dept_name })
+.HasName("uq_deptm_dept_name");
 ````
 
 #### Setting Column Properties
@@ -135,6 +135,7 @@ modelBuilder
 .WithMany()
 .HasForeignKey(e => e.rec_branch_id)
 .HasPrincipalKey(e => e.branch_id)
+.OnDelete(DeleteBehavior.NoAction)
 .IsRequired(false);
 
 modelBuilder
@@ -142,6 +143,7 @@ modelBuilder
 .WithMany()
 .HasForeignKey(e => e.emp_dept_id)
 .HasPrincipalKey(e => e.dept_id)
+.OnDelete(DeleteBehavior.NoAction)
 .IsRequired(false);
 
 
