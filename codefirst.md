@@ -109,8 +109,9 @@ modelBuilder.HasKey(u => u.dept_id)
 ````
 #### Unique Key
 ````
-modelBuilder.HasAlternateKey(e => new { e.dept_name })
-.HasName("uq_deptm_dept_name");
+modelBuilder.HasIndex(e => new { e.dept_name })
+.HasDatabaseName("uq_dept_dept_name")
+.IsUnique();
 ````
 
 #### Setting Column Properties
