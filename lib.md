@@ -8,7 +8,7 @@ Creating angular library
 ````
 ng new workspace --create-application=false
 ng g library my-lib --prefix=njx
-ng g new myapp
+ng new myapp
 
 package.json
 "lib:build"  : "ng build my-lib"
