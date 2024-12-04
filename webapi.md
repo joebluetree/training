@@ -168,11 +168,9 @@ modelBuilder.HasData(
 Commands for migration
 
 add-migration "migration name" //Add/Track Migration
-update-database // Apply Changes to database
-
 update-database 0 // Remove database migration
 remove-migration // Remove migration from code
-
+update-database // Apply Changes to database
 drop-database // Remove database
 
 ```
